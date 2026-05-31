@@ -1,10 +1,11 @@
 import 'reflect-metadata';
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'configuration';
-process.env.APP_ENV = process.env.APP_ENV || 'configuration';
-
 import dotenv = require('dotenv');
-dotenv.config({ path: `${__dirname}/../config/${process.env.APP_ENV}.env` });
+
+// Solo cargar el .env local si no hay variables de entorno del sistema
+if (!process.env.DB_HOST) {
+  dotenv.config({ path: `${__dirname}/../config/configuration.env` });
+}
 
 import express = require('express');
 import cors from 'cors';
