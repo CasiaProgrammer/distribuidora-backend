@@ -1,0 +1,4 @@
+import app from './app';
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Distribuidora API corriendo en http://localhost:${port}`));
