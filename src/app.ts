@@ -28,7 +28,7 @@ const controllersPath = path.join(__dirname, 'controllers');
 console.log('Controllers path:', controllersPath);
 console.log('__dirname:', __dirname);
 
-const isProduction = !__dirname.includes('src');
+const isProduction = __dirname.endsWith('dist') || __dirname.includes('/dist');
 const controllerPattern = isProduction ? 'controllers/*.js' : 'controllers/*.ts';
 console.log('Controller pattern:', controllerPattern);
 
