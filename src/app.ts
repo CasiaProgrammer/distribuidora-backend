@@ -22,6 +22,9 @@ app.use(cors({
 app.use(express.json());
 
 loadContainer(app);
-app.use(loadControllers('controllers/*.ts', { cwd: __dirname }));
+
+const isProduction = !__dirname.includes('src');
+const controllerPattern = isProduction ? 'controllers/*.js' : 'controllers/*.ts';
+app.use(loadControllers(controllerPattern, { cwd: __dirname }));
 
 export default app;
